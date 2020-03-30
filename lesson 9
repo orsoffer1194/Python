@@ -1,0 +1,58 @@
+
+def or1():
+
+    movie = ['The notebook','Maleficrny','Batman v Superman', 'Black Swan',
+         'Gone Girl','War of the Worlds','Just Married']
+    actor = ['Rachel McAdams','Angelina Jolie','Gal Gadot','Natalie Portmn',
+         'Rosamund Pike','Dakota Fanning', 'Brittany Murphy']
+    for i,j in zip(movie,actor):
+        print(i,"is playes by", j)
+
+def or2():
+    
+    movie = ['The notebook','Maleficrny','Batman v Superman', 'Black Swan',
+         'Gone Girl','War of the Worlds','Just Married']
+    actor = ['Rachel McAdams','Angelina Jolie','Gal Gadot','Natalie Portmn',
+         'Rosamund Pike','Dakota Fanning', 'Brittany Murphy']
+
+    for key,value in zip(movie,actor):
+        print(dict(zip(movie,actor)))
+
+def or3():
+   
+    movie = ['The notebook','Maleficrny','Batman v Superman', 'Black Swan',
+             'Gone Girl','War of the Worlds','Just Married']
+    actor = ['Rachel McAdams','Angelina Jolie','Gal Gadot','Natalie Portmn',
+             'Rosamund Pike','Dakota Fanning', 'Brittany Murphy']
+    
+        
+    [print(dict(zip(movie,actor)))for key,value in zip(movie, actor)]
+
+def or4():
+    for i in range(1,100):
+        if(i%7) == 0:
+            print('Boom')
+        else:
+            print(i)
+'''[i*100 if(i%2==0) else i for i in range(1,10)]'''
+'''[i*100 for i in range(1,10) if(i%2==)]'''
+'''['Boom' if(i%7)==0 else i for i in range(1,100)]'''
+
+def sum(x,y):
+    return x+y
+
+    map(sum,[x,y])
+
+def joul():
+
+    joules = [5000,8000,10000,6000,12000]
+    cal = [i/4184 for i in joules]
+
+    dict(zip(joules,cal))
+
+def lang():
+    la = ["HTML","JavaScript","Python","Ruby"]
+    res = filter(lambda x:x=="Python",la)
+    print(list(res))
+    
+    [x for x in lan if x == 'Python']
