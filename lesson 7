@@ -1,0 +1,106 @@
+ef sum(num):
+    if num == 1:
+        return 1
+    x = num
+    num = sum(num-1)
+
+    x += num
+    print(x)
+    return x
+
+def sum1(n):
+    if n == 0:
+        return 0
+    
+    if n == 1:
+        return 1
+    return n + sum1(n - 2)
+
+def hailstone(n):
+    assert n>0
+    print('a = ',n)
+    if n == 1:
+        return 1
+    elif n % 2 == 0:
+        return 1 + hailstone(n// 2)
+    else:
+        return 1 +  hailstone(3*n+1)
+    
+def paths(m,n):
+    if n == 0 or m == 0:
+        return 0
+    if n == 1 or m == 1:
+        return 1
+    if 1 or 1 == 0:
+        print ('true')
+    if 1 or 0 == 0:
+        print('true1')
+    return paths(m-1,n) + paths(m,n-1)
+
+def or1(n,m):
+    if n==0 or m ==0:
+        return 0
+    if n==1:
+        return m
+    elif m == 1:
+        return n
+    else:
+        return n*m
+    return or1(n-1,m)+or1(n,m-1)
+
+def or2(n,m):
+    if m == 0:
+        return 1
+    return n * or2(n,m-1)
+
+def or3(n):
+    if n == 0:
+        return 0
+    print(n)
+    return or3(n-1)
+     
+
+def or5(a):
+    if a == "":
+        return a
+    else:
+        return or5(a[1:]) + a[0]
+    print (a)
+
+
+def or7(n):
+    if n == 0:
+        return 0
+    if n==1:
+        return 1
+    return or7(n-1)+or7(n-2)
+
+''' if prime divided by himself and 1'''
+def or8(n,i=2):
+    if n <= 2:
+        if n==2:
+            return True
+        else:
+            return False
+    if( n % i == 0):
+        return False
+    if (i * i > n):
+        return True
+    return or8(n,i+1)
+    
+
+def or13(n ):
+
+    ''' n is odd'''
+    if(n % 2 != 0):
+        print("Weird")
+    else:
+     if(n>=2 and n<=5):
+        print("Not Weird")
+     elif(n>=6 and n<=20):
+        print("Weird")
+     elif(n >= 21):
+        print("Not Weird")
+
+
+
