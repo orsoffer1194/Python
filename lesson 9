@@ -56,3 +56,16 @@ def lang():
     print(list(res))
     
     [x for x in lan if x == 'Python']
+
+'''make car to rac'''
+def isAnagram(s: str, t: str) -> bool:
+    list_s = list(s)
+    list_s.sort()
+    list_t = list(t)
+    list_t.sort()
+        
+    if(list_s == list_t):
+        return True
+    else:
+        return False
+    
