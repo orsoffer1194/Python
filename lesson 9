@@ -69,3 +69,10 @@ def isAnagram(s: str, t: str) -> bool:
     else:
         return False
     
+'''add number as 14 and return [1,5]'''
+def ex3(digit):
+    x = 0
+    x = digit+1
+    x =  list(map(int,str( x)))
+    print(x)
+
