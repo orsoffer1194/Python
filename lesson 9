@@ -76,3 +76,45 @@ def ex3(digit):
     x =  list(map(int,str( x)))
     print(x)
 
+
+def cows_and_bulls():
+    
+    bolls = 0
+    hits = 0
+    cnt = 0
+    common=[]
+    game = True
+    cmp = ''.join(random.choice(string.ascii_lowercase) for i in range(0,5))
+    print(cmp)
+    user = str(input("Please enter string as you wish "))
+
+    while game:
+        if(len(user) > 5 or len(user) < 5):
+            print("Invaild string. it most conatin 5 char",user)
+            break;
+        elif re.search("[A-Z]",user):
+            print("Invaild string. ONLY lower Alphbeth")
+            break;
+        elif re.search("[0-9]",user):
+            print("Invaild string. ONLY chars")
+            break;
+        else:
+            print("Vaild string")
+            game = False
+
+    '''Bolls'''
+    for i in range(len(user)):
+        if cmp[i] == user[i]:
+            bolls += 1
+    print("The No. of bolls is",bolls)
+
+    for i in set(cmp):
+        for j in set(user):
+            if i == j:
+                common.append(i)
+    
+    hits = len(common)-bolls
+    print("The No. of hits is ", hits)
+    
+        
+    
