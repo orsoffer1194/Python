@@ -116,5 +116,33 @@ def cows_and_bulls():
     hits = len(common)-bolls
     print("The No. of hits is ", hits)
     
+    
+# calculater roman number decimal       
+def ex2(s):
+    
+    if(s == 'I'):
+        return 1
+    if(s == 'V'):
+        return 5
+    if(s == 'X'):
+        return 10
+    if(s == 'L'):
+        return 50
+               
+def roman(str1):
+
+    num = 0
+    roman = [ex2(i) for i in str1]
+    
+    for n in range(len(str1)-1):
+        if(roman[n] >= roman[n+1]):
+            num += roman[n]
+            print(num)
+        else:
+            num -= roman[n]
+            print(num)
         
+    num += roman[-1]
+ 
+    print("The Final Number is",num)
     
