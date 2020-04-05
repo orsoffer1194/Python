@@ -31,3 +31,10 @@ def str():
 
     for i in T:
         print ('(',len(i),',',int(i[0]),')',end = " ")
+        
+        
+import re
+# check if the number is float, it can start with one symbol +,-.
+for i in range(int(input())):
+    k = input()
+    print(bool(re.match(r'^[+-]?\d*?\.{1}\d+$',k)))
