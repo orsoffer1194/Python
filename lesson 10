@@ -1,0 +1,67 @@
+# python
+
+a = 2 --> a is a name with a binding to the integer object 2
+print(id(a)) -- print the number id of a
+print(type(a)) -- print <'class int'>
+print(a)            
+
+#how to create class in Python
+class human():
+        #constructor
+        def _init_(self,human_gender = "unknown",age = 0,
+                   mungry_level = "peaceful",hunger_level = 0):
+        
+            self.human_gender = human_gender
+            self.age = age
+            self.mungry_level = mungry_level
+            self.hunger_level = hunger_level
+
+        def setGender(self):
+            self.human_gender = input("Please enter human's gender: ")
+
+        def setAge(self):
+            self.age = int(input("Please enter human's age: "))
+
+        def setHunger_level(self):
+            self.hunger_level = int(input("Please enter human's hunger level bwtween 0-10: "))
+
+        def changeMungry_level(self):
+            if 0 <= self.hunger_level < 4:
+                self.mungry_level = "Human is currently peaceful"
+            elif 4<= self.hunger_level <8:
+                self.mungry_level = "Human is now gettig narky"
+            elif 8<= self.hunger_level <= 10:
+                self.mungry_level = "Human is now gettig agressive! whatch out"
+            return(self.mungry_level)
+        
+#this class inhertitance functions from human class
+class man(human):
+    def _init_(self):
+        #The super() calls the human()
+        super()._init_(human_gender = "Male")
+
+
+
+def main():
+
+    self1 = human()
+    self1.setGender()
+    self1.setAge()
+    self1.setHunger_level()
+    print("The human's gender is:" ,self1.human_gender)
+    print("The human's is: ",self1.age)
+    print("The human's hunger level is: ",self1.hunger_level)
+    print(self1.changeMungry_level())
+
+
+    A_man = man()
+    print("The human is a:", A_man.human_gender)
+    print("The humans is: ", A_man.age)
+    
+
+
+
+    if __name__ == "__main__":
+        main()
+                           
+    
