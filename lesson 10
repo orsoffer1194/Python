@@ -64,75 +64,9 @@ def main():
     if __name__ == "__main__":
         main()
         
-        
-        
-    from fractions import Fraction
-#how to create class in Python
-
-
-
-
-
-'''Calculator rational numbers'''
-class Rational:
-    
-    def __init__(self,cnt,demo = 1):
-        self.cnt = cnt
-        self.demo = demo
-        
-    def __str__(self):
-        return (Fraction(self%10))
-
-    #compute the greatest common divisor of two positive integers
-    def __gcd__(a,b):
-        if b == 0:
-            return a
-        else:
-            return __gcd__(b,a%b)
-        
-    def __add__(cnt,dem):
-        add = ((cnt.p * demo.q + cnt.q * demo.p)/(demo.p*demo.q))
-        return add
-
-    def __sub__(cnt,demo):
-        return ((cnt.p*demo.q-cnt.q*demo.p)/(demo.p*demo.q))
-
-
-    def __mul__(cnt,demo):
-        return ((cnt.p * cnt.q)/(demo.p * demo.q))
-        
-
-    def __truediv__(cnt,demo):
-        return ((cnt.p/cnt.q)*(demo.q/cnt.q))
-    
-    def __eq__(p,q):
-        # put both fractions in same terms
-        fac1 = other.q
-        fac2 = self.q
-        
-        self.p = self.p* fac1
-        self.q = self.q * fac1
-        
-        other.p = other.p * fac2
-        other.q = other.q * fac2
-        
-        equal = self.p == q
-        print(equal)
-# r = p/q        
-res1 = float(input("Please enter rational number "))
-res2 = float(input("Please enter rational number "))
-res = res1/res2
-print("The No. after difference is",Rational.__str__(res))
-print("The greates common divisor is",Rational.__gcd__(res1,res2))
-print("The No.after additional is",Rational.__add__(res1,res2))
-print("The No.after substrac is",Rational.__sub__(res1,res2))
-print("The No.after multiply is",Rational.__mul__(res1,res2))
-print("The No.after divsion is",Rational.__truediv__(res1,res2))
-print("Both of the  rational are",Rational.__sub__(res1,res2))
                            
-
-                           
- #Binary Tree data structor                          
+ #Binary Tree data structor
+ #The root is bigger from the left side of the tree, and small from the right node
  class TreeNode:
 
     def __init__(self,val):
