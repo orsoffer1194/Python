@@ -63,5 +63,203 @@ def main():
 
     if __name__ == "__main__":
         main()
-                           
+        
+        
+        
+    from fractions import Fraction
+#how to create class in Python
+
+
+
+
+
+'''Calculator rational numbers'''
+class Rational:
     
+    def __init__(self,cnt,demo = 1):
+        self.cnt = cnt
+        self.demo = demo
+        
+    def __str__(self):
+        return (Fraction(self%10))
+
+    #compute the greatest common divisor of two positive integers
+    def __gcd__(a,b):
+        if b == 0:
+            return a
+        else:
+            return __gcd__(b,a%b)
+        
+    def __add__(cnt,dem):
+        add = ((cnt.p * demo.q + cnt.q * demo.p)/(demo.p*demo.q))
+        return add
+
+    def __sub__(cnt,demo):
+        return ((cnt.p*demo.q-cnt.q*demo.p)/(demo.p*demo.q))
+
+
+    def __mul__(cnt,demo):
+        return ((cnt.p * cnt.q)/(demo.p * demo.q))
+        
+
+    def __truediv__(cnt,demo):
+        return ((cnt.p/cnt.q)*(demo.q/cnt.q))
+    
+    def __eq__(p,q):
+        # put both fractions in same terms
+        fac1 = other.q
+        fac2 = self.q
+        
+        self.p = self.p* fac1
+        self.q = self.q * fac1
+        
+        other.p = other.p * fac2
+        other.q = other.q * fac2
+        
+        equal = self.p == q
+        print(equal)
+# r = p/q        
+res1 = float(input("Please enter rational number "))
+res2 = float(input("Please enter rational number "))
+res = res1/res2
+print("The No. after difference is",Rational.__str__(res))
+print("The greates common divisor is",Rational.__gcd__(res1,res2))
+print("The No.after additional is",Rational.__add__(res1,res2))
+print("The No.after substrac is",Rational.__sub__(res1,res2))
+print("The No.after multiply is",Rational.__mul__(res1,res2))
+print("The No.after divsion is",Rational.__truediv__(res1,res2))
+print("Both of the  rational are",Rational.__sub__(res1,res2))
+                           
+
+                           
+ #Binary Tree data structor                          
+ class TreeNode:
+
+    def __init__(self,val):
+        self.left = None
+        self.right = None
+        #The value of the node
+        self.val = val
+        self.root = None
+
+    def __str__(self):
+        return str(self.val)
+
+    def insert(self,val):
+        '''is the tree is empty add the first value to the root'''
+        if self.root == None:
+            self.root = TreeNode(val)
+        else:
+            curr = self.root
+            
+            while(1):
+                if val < curr.val:
+                    if curr.left:
+                        curr = curr.left
+                    else:
+                        curr.left = TreeNode(val)
+                        break
+                elif(val > curr.val):
+                    if curr.right:
+                        curr = curr.right
+                    else:
+                        curr.right = TreeNode(val)
+                        break;
+                else:
+                    break
+
+    def printTree(self,node):
+        if node is not None:
+            self.printTree(node.root)
+            self.printTree(node.left)
+            self.printTree(node.right)
+            print(node.val,end="-->")
+
+ 
+
+tree = TreeNode(4)
+tree.insert(8)
+tree.insert(3)
+tree.insert(1)
+tree.insert(9)
+tree.printTree(tree.root)
+ 
+ 
+ 
+ 
+ #class of calculate rational numbers with aritmatics
+from fractions import Fraction
+
+def gcd(a,b):
+    if b==0:
+        return a
+    else:
+        return gcd(a,a%b)
+
+class Rational:
+
+    def __init__(self,p,q):
+        self.p = p
+        self.q = q
+        gcd(p,q)
+
+    def __str__(self):
+        return (str(self.p)+"/"+str(self.q))
+
+    def __add__(self,other):
+        a1 = self.p
+        b1 = self.q
+        res1 = self.p /self.q
+        b2 = other
+        res2 =  b2
+        return float(str(res1+res2))
+    
+    def __sub__(self,other):
+        a1 = self.p
+        b1 = self.q
+        res1 = self.p/self.q
+        b2 = other
+        res2 = b2
+        return float(res1-res2)
+
+    def __mul__(self,other):
+        a1 = self.p
+        b1 = self.q
+        res1 = self.p/self.q
+        b2 = other
+        res2 = b2
+        return float(res1*res2)
+
+    def __truediv__(self,other):
+        a1 = self.p
+        b1 = self.q
+        res1 = self.p/self.q
+        b2 = other
+        res2 = b2
+        return float(res1/res2)
+
+    def __eq__(self,other):
+        a1 = self.p
+        b1 = self.q
+        res1 = self.p/self.q
+        if res1 == other:
+            return True
+        else:
+            return False
+
+   
+p = int(input("Please enter the first number "))
+q = int(input("Please enter the second number "))
+number = Rational(p,q)
+val = (Fraction(p/q).limit_denominator(1000))
+print("The greatest common divisor is " ,number.__str__())
+print("The Rational No. is ", str(val))
+r1 = int(input("Please enter the first number "))
+r2 = int(input("Please enter the second number "))
+r = (Fraction(r1/r2).limit_denominator(1000))    
+print("The Rational No. after addition is ",number.__add__(r))
+print("The Rational No. after substract is ",number.__sub__(r))
+print("The Rational No. after multiply is ",number.__mul__(r))
+print("The Rational No. after divison is ",number.__truediv__(r))
+print("The Rational No. is equals to the given number ",number.__eq__(r))
+
