@@ -247,12 +247,15 @@ class Rational:
         else:
             return False
 
+    def __float__(self):
+        return (self.p/self.q)
+
    
 p = int(input("Please enter the first number "))
 q = int(input("Please enter the second number "))
 number = Rational(p,q)
 val = (Fraction(p/q).limit_denominator(1000))
-print("The greatest common divisor is " ,number.__str__())
+print("The greatest common divisor is " ,gcd(p,q))
 print("The Rational No. is ", str(val))
 r1 = int(input("Please enter the first number "))
 r2 = int(input("Please enter the second number "))
@@ -262,4 +265,4 @@ print("The Rational No. after substract is ",number.__sub__(r))
 print("The Rational No. after multiply is ",number.__mul__(r))
 print("The Rational No. after divison is ",number.__truediv__(r))
 print("The Rational No. is equals to the given number ",number.__eq__(r))
-
+print("The Rational No. is - ",val," The float number is ",number.__float__())
