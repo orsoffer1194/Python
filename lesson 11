@@ -1,0 +1,31 @@
+#Creat file as input.txt with 15 words as we wish
+#Creat new file as reverse.txt 
+#And write words from input in reverse in reverse.txt
+
+file = open('reverse.txt','w')
+
+# print in reverse into reverse.txt file
+for line in reversed(open("input.txt","r").read()):
+    x = line.rstrip('')
+    file.write(x)
+
+file.close()
+    
+#for adding the words from input.txt file
+#we will add to the method
+#open funcion to open input and read from it the information
+
+
+file = open('reverse.txt','w')
+file1 = open('input.txt','r')
+
+# print in reverse into reverse.txt file
+for line in reversed(open("input.txt","r").read()):
+    x = line.rstrip('')
+    file.write(x)
+    file.write(file1.read())
+
+file.close()
+# in the reverse.txt file we will get
+#15 words from input in order
+#And 15 reverse words
