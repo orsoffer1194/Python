@@ -29,3 +29,95 @@ file.close()
 # in the reverse.txt file we will get
 #15 words from input in order
 #And 15 reverse words
+
+
+
+
+#ex 2:
+from collections import Counter
+from re import split
+import re
+import string
+
+#---1---
+def word_dic(filename):
+    
+    list1 = {}
+
+    with open('alice.txt','r') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower()
+                if not word in list1:
+                    list1[word] = 1
+                else:
+                    list1[word] += 1
+
+        file.close()
+        return list1
+def print_words(filename):
+    word_cnt = word_dic('alice.txt')
+    words = sorted(word_cnt.keys())
+    for word in words:
+        print(word,word_cnt[word])
+
+def word_count(fileName):
+    
+    with open(fileName) as f:
+        return Counter(f.read().split())
+    
+print(word_count('alice.txt'))
+
+
+def get_count(word_count_tuple):
+  """Returns the count from a dict word/count tuple  -- used for custom sort."""
+  return word_count_tuple[1]
+    
+def print_top(filename):
+
+    word_count = word_dic(filename)
+    items = sorted(word_count.items(), key=get_count, reverse=True)
+
+  
+    for item in items[:20]:
+        print(item[0], item[1])
+
+'''        
+#---2----
+with open('alice.txt') as f:
+    text = f.read().lower()
+
+pattern = '\w+'
+words = re.findall(pattern, text)
+
+top_20 = Counter(words).most_common(20)
+for word,count in top_20:
+    print(f'{word:<4}{count:>4}')
+
+----------------------
+cnt = dict()
+pattern = '\(\"\--\w+'
+
+with open('alice.txt') as file:
+    text = file.read().lower()
+    
+for line in text:
+    line = line.strip()
+    line = line.lower()
+    line = line.translate(line.maketrans("", "", string.punctuation)) 
+
+    words = line.split(' ')
+    words = re.findall(pattern,text)
+    
+    for word in words:
+        if word in cnt:
+            cnt[word] += 1
+        else:
+            cnt[word] = 1
+
+            
+for key in list(sorted(cnt.keys())):
+    print(key,":",cnt[key])
+'''
+
