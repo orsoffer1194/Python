@@ -1,0 +1,463 @@
+def or1():
+    
+    x,y,z,n = (int(input()) for i in range(4))
+    arr = []
+
+    for i in range(x+1):
+        for j in range(y+1):
+            for k in range(z+1):
+                if i+j+k != n:
+                    arr.append([i,j,k])
+    print(arr)
+
+
+#check if the given number is equal to item in the list
+def or2():
+
+    #given the len's array
+    n = int(input("Please enter an integer "))
+    #An array A[] of n integers that separated by a space
+    arr = list(map(int,input("Please enter a array ").split()))
+    max_num = max(arr)
+    i = 0
+    
+    while(max(arr) == max_num):
+        arr.remove(max(arr))
+       
+    print(max(arr))
+
+
+def or3():
+    
+    list_1 = []
+    #The number of students
+    for i in range(int(input())):
+        name = input()
+        score = float(input())
+        list_1.append([name,score])
+
+    scd_high = sorted(list(set([i for name,i in list_1])))[1]
+    print('\n'.join([i for i,j in sorted(list_1) if j == scd_high]))
+
+def or4():
+
+    n = int(input())
+    student_marks = {}
+    for i in range(n):
+        name, *line = input("Name: ").split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input("The name of the student:" )
+    query_score = student_marks[query_name]
+
+    x = sum(query_score)
+    y = len(query_score)
+    print(format(x/y,'.2f'))
+
+import re
+from itertools import groupby
+def or5():
+
+    #groups of 4 seperated by one "-"(3 times)
+    # [0-9] == \d
+    #and not pattern.fullmatch(num)
+    #print("the number Must contain 4 gorups and 3 '-'")
+    #\b((?(?<=\d{4})-?|)(\d)(?!\2{3}|\2{2}-\2|\2-\2{2}|-\2{3})){16}\b
+    #r'(?:\d{4}-){3}\d{4}|\d{16}'
+
+    n = int(input())
+    for i in range(n):
+        num = input().strip()
+        pattern = re.search(r'^[456]\d{3}(-?)\d{4}\1\d{4}\1\d{4}$',num)
+        if pattern:
+            string = "".join(pattern.group(0).split('-'))
+            final_string = re.search(r'(\d)\1{3,}',string)
+            if final_string:
+                print('Invaild')
+            else:
+                print('Vaild')
+        else:
+            print('Invaild')
+        
+
+    '''
+    pattern1 = re.compile(r'(\d)\1{3,}')
+    pattern2 = re.compile(r'(?:\d{4}-){3}\d{4}|\d{16}')
+    sym = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+    
+
+    n = int(input("Please enter the number of times"))
+    for i in range(n):
+        num = input("Please enter number: ")
+        pattern = re.search(r'^[456]\d{3}(-?)\d{4}\1\d{4}\1\d{4}$',num)
+        processed_string = "".join(pattern.group(0).split('-'))
+        if(pattern2.fullmatch(num) == None):
+            print("Must contains only 16 numbers")
+        if(re.search(pattern1,processed_string)):
+                print("4+ repeated digits")
+        elif(pattern2.fullmatch(num) == None):
+            if(num.isdigit() == False and pattern.fullmatch(num) == None):
+                print("Must contains only digits OR not repeat digits")
+            if(num.startswith(('4','5','6')) == False):
+                print("Must start with 4,5 or 6")
+            if(sym.search(num) != None):
+                print("Symbols are not allowed")
+        else:
+            print("Vaild number")
+            '''
+
+import re 
+def or6():
+    
+    regex_integer_in_range = r'^[1-9][0-9]{6}$'   
+    regex_alternating_repetitive_digit_pair = r"(\d)(?=\d\1)"
+    P = input()
+
+    print (bool(re.match(regex_integer_in_range, P)) 
+and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+
+import math
+import os
+import random
+import re
+import sys
+
+def or7():
+    
+    first_multiple_input = input().rstrip().split()
+    sym = ("[!,@,#,$,%,&]")
+    alpha = (r'[a-zA-Z0-9]')
+    space = ('\s+')
+    n = int(first_multiple_input[0])
+    m = int(first_multiple_input[1])
+    
+    matrix = []
+    for i in range(n):
+        matrix_item = input()
+        matrix.append(matrix_item)
+    matrix = '\n'.join(map(str,matrix))
+    matrix = matrix.replace("","  ")
+    x = re.findall(sym,str(matrix))
+    y = re.findall(alpha,str(matrix))
+    z =re.findall(space,matrix)
+    print("This",x,"is",x,"is",x,"matrix",x,z)
+
+def or8(string,position,char):
+    return string[:5] + "k" + string[6:]
+
+def or9(string,sub_string):
+    cnt = 0
+    y = len(sub_string)
+    x = ([string[i:i+y] for i in range(0,len(string))])
+    for i in range(len(x)):
+        if(x[i] == sub_string):
+            cnt += 1
+    print(cnt)
+    
+        
+def or10():
+    
+    s = input()
+    print(any(i.isalnum() for i in s))
+    print(any(i.isalpha() for i in s))
+    print(any(i.isdigit() for i in s))  
+    print(any(i.islower() for i in s))
+    print(any(i.isupper() for i in s))
+
+def or11():
+    
+    thickness = int(input()) #This must be an odd number
+    c = 'H'
+
+    #Top Cone
+    for i in range(thickness):
+        print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+    #Top Pillars
+    for i in range(thickness+1):
+        print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+    #Middle Belt
+    for i in range((thickness+1)//2):
+        print((c*thickness*5).center(thickness*6))    
+
+    #Bottom Pillars
+    for i in range(thickness+1):
+        print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+    #Bottom Cone
+    for i in range(thickness):
+        print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+def or12(string,max_width):
+    x = ([string[i:i+max_width] for i in range(0,len(string),max_width)])
+    print('\n'.join(x))
+
+def or13():
+    N = int(input())
+    M = int(input())
+    c = "-"
+    d = "."
+    m = "|"
+    for i in range(M):
+        for j in range(N):
+            print((c*i).rjust(M-1)+(m).rjust(N-1)+d+(m).rjust(N-1)+(c*i).ljust(N-1))     
+
+#format
+#{:d} decimal, {:b} binary,{:x} Hexadecimal,{:o} octal            
+def or14():
+
+    n = int(input())
+    val = len("{0:b}".format(n))
+    for i in range(1,n+1):
+        print(" {0:{val}d} {0:{val}o} {0:{val}X} {0:{val}b} ".format(i,val = val))    
+
+def or15():
+    N = str(input())
+    for char in N[::-1].split('\n'):
+        print(char)
+        
+import math
+
+def or15():
+#same number
+    
+    AB = int(input())
+    BC = int(input())
+    '''
+    print(str(int(round(math.degrees(math.atan2(AB, BC)))))+'°')
+    '''
+
+#AC^2 = AB^2+BC^2
+    C = pow(AB,2) + pow(BC,2)
+#The sqrt of AC
+    x = math.atan2(AB,BC)
+    
+    print(math.floor(math.degrees(x)),u"\N{DEGREE SIGN}")
+
+#polindrom
+def or16():
+    x = int(input())
+    for i in range(1,x+1):
+        print(int((10**i-1)/9)**2)
+
+def or17(a,b):
+    x= int(a/b)
+    print(x)
+    y = (a%b)
+    print(y)
+    print("({},{})".format(x,y))
+
+def or18():
+    a = int(input())
+    b = int(input())
+    m = int(input())
+    x = pow(a,b)
+    y = pow(a,b,m)
+    print("x = ",x)
+    print("y = ",y)
+
+def or19():
+    num = int(input())
+    for i in range(1,num):
+        print(i*(10**i-1)//9)
+        #i = 1 --> 1
+
+    '''
+    for i in range(1,num):
+        for j in range(i):
+            print(int(i),end ="")
+        print('')
+    '''
+
+import calendar
+#print The calendar of the year
+#print(calendar.TextCalendar(firstweekday=6).formatyear(2020))
+def or20():
+    MM,DD,YYYY = map(int,input().strip().split())
+    x = calendar.weekday(YYYY,MM,DD)
+    switcher = {
+                6:'Sunday',
+                0:'Monday',
+                1:'Tuesday',
+                2:'Wednesday',
+                3:'Thursday',
+                4:'Friday',
+                5:'Saturday'
+        }
+    y = switcher.get(x,"Invaild day of week")
+    #z = calendar.month(YYYY,DD,w=0,l=0)
+    print(y)
+    '''
+    print("The day on {} {} {} was {}",format(z,MM),format(YYYY,y))
+    '''
+#hash(t)
+def or21():
+    num = int(input())
+    lists = map(float,input().strip().split())
+    print(hash(tuple(lists)))
+
+
+#pssocode for decimal to binary
+# take number as decimal and division it by 2 until we get to 1 (without modulo)
+# Than,if the number is even we print '0'
+# If the number is odd we print '1'
+# we need to enter all the numbers to new list
+# And use the build function "reverse()" to print the number in the right order
+#For exemple :
+#  32%2 == 0 list = [0], 32//2 = 16
+#  16%2 ==0 list = [0,0], 16//2 = 8
+#  8%2 ==0 , list = [0,0,0], 8//2 = 4
+#  4%2==0, list  =[0,0,0,0] , 4//2 = 2
+#  2%2 == 0, list = [0,0,0,0,0] . 2//2 = 1
+#  1%2 == 1 , list = [0,0,0,0,0,1]/ 1//2 = 0
+#  list.reverser() --> [1,0,0,0,0,0] .. print as for loop --> 10000
+def dec_to_bin(num):
+    list_1 = []
+    while(num>0):
+        tmp = num % 2
+        list_1.append(tmp)
+        num = num//2
+    list_1.reverse()
+    print("The Binary number is: ")
+    for i in list_1:
+        print(i,end="")
+
+# Convert from binary to decimal
+# So we have binary number as 1010
+# We start from right to left so that every number get 2^i
+# Depends on its location in the number
+# for exemple(from right to left) 0 = 2^0,1 = 2^1,0 = 2^2,1=2^3
+# Than, each digit in the binary number multiplied by power 2
+# For exepmle : 0*2^0 + 1*2^1+0*2^2+1*2^3 = 0 + 2 + 0 + 8 = 10
+# So The decimal number of 1010 is 10 
+def bin_to_dec(binary):
+    dec,i = 0,0
+    while(binary != 0):
+        number = binary % 10
+        dec = dec + number * pow(2,i)
+        binary = binary // 10
+        i += 1
+    print(dec)
+    
+    
+
+'''
+def dec_to_binary(number):
+    make empty list , list = []
+
+    while number > 0
+        tmp = number % 2
+        
+        add number to new list list.append(number) 
+       divis the given number by two and get integer number = 32//2  = 16
+        number = number // 2
+    list_1.reverse to print in reverse the list to get the binary number
+    for i in list_1 print i to get the number in one line
+        
+'''        
+
+def or22(s):
+    for i in s[:].split():
+        s = s.replace(i,i.capitalize())
+    print(s)
+'''
+def or9(string,sub_string):
+    cnt = 0
+    y = len(sub_string)
+    x = ([string[i:i+y] for i in range(0,len(string))])
+    for i in range(len(x)):
+        if(x[i] == sub_string):
+            cnt += 1
+    print(cnt)
+    '''
+def or23(s):
+    print(s.swapcase())
+
+#merge the tools
+import itertools        
+def or24():
+
+    S = str(input())
+    N = int(input())
+    x = len(S)
+    K = int(x/N)
+
+    for i in range(0,len(S),K):
+        s = ""
+        for j in S[i:i+N]:
+            if j not in s:
+                s += j
+        print(s)
+
+from collections import Counter,OrderedDict
+from heapq import nlargest
+import collections
+def or25():
+    
+    string = input()
+    count = {}
+    for s in string:
+      if s in count:
+        count[s] += 1
+      else:
+        count[s] = 1
+    x = nlargest(3,sorted(count),key = count.get)
+    y = sorted(count)
+    z =''.join(y)
+    for key in x:
+        if(count[key] > 1):
+            print(key,count[key])
+    
+    for i in range(0,3):
+        if count[key] == 1:
+            print(z[i],count[key])
+            
+#^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$
+   
+'''
+    #groups of 4 seperated by one "-"(3 times)
+    # [0-9] == \d
+    #and not pattern.fullmatch(num)
+    #print("the number Must contain 4 gorups and 3 '-'")
+    #\b((?(?<=\d{4})-?|)(\d)(?!\2{3}|\2{2}-\2|\2-\2{2}|-\2{3})){16}\b
+    #r'(?:\d{4}-){3}\d{4}|\d{16}'
+
+    n = int(input())
+    for i in range(n):
+        num = input().strip()
+        pattern = re.search(r'^[456]\d{3}(-?)\d{4}\1\d{4}\1\d{4}$',num)
+        if pattern:
+            string = "".join(pattern.group(0).split('-'))
+            final_string = re.search(r'(\d)\1{3,}',string)
+            if final_string:
+                print('Invaild')
+            else:
+                print('Vaild')
+        else:
+            print('Invaild')
+'''
+#loop of inputs  == num = [input() for i in range(n)]       
+import re
+from itertools import groupby
+#vaild phot number
+def or26():
+    #number of the integer numbers user wants to check bewteen 2-15
+    pattern = r'[789]\d{9}$'
+    n = int(input())
+    num = [input() for i in range(n)]
+    for i in num:
+        if(re.match(pattern,i)):
+            print("YES")
+        else:
+            print("NO")
+
+import email.utils as email
+import re
+def or27():
+    n = int(input())
+    pattern = r'<[A-Za-z][\w\.-]+@[A-Za-z]+\.[A-Za-z]{1,3}>$'
+    mail = [input() for i in range(n)]
+    for i in mail:
+        if re.search(pattern,i):
+            print(email.formataddr(email.parseaddr(i)))
