@@ -1,0 +1,59 @@
+#loop that pro
+
+while True:
+  try:
+    number = int(input('Please Enter your favorite number"))
+    print(3/number)
+    break
+  #if the errors in the run is value error  
+  except ValueError:
+    print("Enter number!")
+  except ZeroDivisonError:
+    print("Do not pick zero")
+  else:
+    print("Good Job")
+  
+    finally:
+      pass
+
+  //The else is run only if we dont have any errors
+  //except Exception : general error
+  //FileNotFoundError - the file's name is incorrect/not exist
+  //It's important to put the specific errors in to top of the loop and the general in the bottom
+  //The finnaly make sure we closed down ceratin things 
+  
+  #We can raise the exception(we can chose which one) 
+  
+  
+  
+  #assert -The assert keyword lets you test if a condition in your code returns True, if not, the program will raise an AssertionError.
+  
+  def power(x,y):
+    assert x>0 "X most be positive number {}.format{x}
+    assert y>0 "Y most be positive number {}.format{y}
+    
+    return x**y
+    
+ print(3,5)
+ 
+ 
+ 
+ #EX 1:
+ def or1():
+    '''
+    #This is the code with errors
+    dividend = float(input("Please enter the dividend: "))
+    divisor = float(input("Please enter the divisor: "))
+    quotient = dividend / divisor
+    quotient_rounded = math.round(quotient)
+    '''
+    while True:
+        try:
+            div1 = int(input())
+            div2 = int(input())
+            print("{}/{} = {}".format(div1,div2,div1/div2))
+        except(ValueError, ZeroDivisionError):
+            print("Wrong number")
+        finally:
+            pass
+    
